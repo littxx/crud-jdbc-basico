@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.ScrollPane;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -13,9 +14,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/View.fxml"));
-			Parent parent = loader.load();
-			Scene mainScene = new Scene(parent);
+			javafx.scene.control.ScrollPane scrollpane = loader.load();
+			
+			scrollpane.setFitToHeight(true);
+			scrollpane.setFitToWidth(true);
+			Scene mainScene = new Scene(scrollpane);
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Tabela Funcionarios");
 			primaryStage.show();
